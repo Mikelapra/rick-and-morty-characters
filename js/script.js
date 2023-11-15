@@ -15,3 +15,17 @@ const rickymorty = fetch("https://rickandmortyapi.com/api/character/?page=1")
 })
 
 
+
+const prevpage = document.getElementById("prev-page");
+const nextpage = document.getElementById("next-page");
+let pagina = 0;
+
+prevpage.addEventListener('click', () => {
+pagina--;
+console.log(pagina)}
+);
+
+nextpage.addEventListener('click', () => {
+    pagina++;console.log(pagina)});
+
+
