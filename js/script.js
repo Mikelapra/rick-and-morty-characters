@@ -1,7 +1,9 @@
-const contenedor = document.getElementById("character-list");
+let contenedor = document.getElementById("character-list");
+let pagina = 1
+rickymorty(pagina) 
 
-
-const rickymorty = fetch("https://rickandmortyapi.com/api/character/?page=1")
+function rickymorty (pagina) { 
+fetch(`https://rickandmortyapi.com/api/character/?page=${pagina}`)
 .then ((respuesta) => respuesta.json())
 .then ((data) => { const personajes = data.results;
     personajes.forEach(elemento => {
@@ -12,20 +14,24 @@ const rickymorty = fetch("https://rickandmortyapi.com/api/character/?page=1")
     </div>`
     contenedor.innerHTML += mostrarPersonajes   
     })
-})
+})}
 
 
 
-const prevpage = document.getElementById("prev-page");
-const nextpage = document.getElementById("next-page");
-let pagina = 0;
 
-prevpage.addEventListener('click', () => {
-pagina--;
-console.log(pagina)}
-);
+document.getElementById("next-page").addEventListener('click', restarUno);
+document.getElementById("prev-page",).addEventListener('click', sumarUno);
 
-nextpage.addEventListener('click', () => {
-    pagina++;console.log(pagina)});
+function sumarUno () {
+contenedor.innerHTML =""
+pagina=pagina-1;
+rickymorty(pagina);
 
+}
 
+function restarUno () {
+contenedor.innerHTML =""
+pagina=pagina+1;
+rickymorty(pagina);
+
+}
